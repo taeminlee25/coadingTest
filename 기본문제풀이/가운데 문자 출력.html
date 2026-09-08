@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(s){  
+                let answer;
+                let mid = Math.floor(s.length / 2);
+
+                if (s.length % 2 === 1) {
+                    answer = s.substr(mid, 1);  // 두 번째 인자가 끝 인덱스가 아니라 자를 글자수
+                } else {
+                    answer = s.substr(mid - 1, 2);
+                }
+                return answer;
+            }
+            console.log(solution("study"));
+        </script>
+    </body>
+</html>
