@@ -1,0 +1,50 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>출력결과</title>
+</head>
+
+<body>
+    <script>
+        function countHorses(stable, dist) {
+            let cnt = 1;
+            let lastPos = stable[0]
+
+            for (let i = 1; i < stable.length; i++) {
+                if (stable[i] - lastPos >= dist) {
+                    cnt++
+                    lastPos = stable[i]
+                }
+            }
+            return cnt;
+        }
+        function solution(c, stable) {
+            let answer;
+
+            // 정렬
+            stable.sort((a, b) => a - b)
+
+            let low = 1;
+            let high = stable[stable.length - 1] - stable[0]
+
+            while (low <= high) {
+                let mid = Math.floor((low + high) / 2)
+
+                if (countHorses(stable, mid) >= c) {
+                    answer = mid;
+                    low = mid + 1;
+                } else {
+                    high = mid - 1
+                }
+            }
+
+            return answer;
+        }
+
+        let arr = [1, 2, 8, 4, 9];
+        console.log(solution(3, arr));
+    </script>
+</body>
+
+</html>

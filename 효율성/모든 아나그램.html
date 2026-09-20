@@ -1,0 +1,61 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>출력결과</title>
+</head>
+
+<body>
+    <script>
+        function compareMaps(map1, map2) {
+            if (map1.size !== map2.size) {
+                return false;
+            }
+            for (let [key, val] of map1) {
+                if (!map2.has(key) || map2.get(key) !== val) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        function solution(s, t) {
+            let answer = 0;
+            let th = new Map()
+            let sh = new Map()
+
+            for (let x of t) {
+                th.set(x, (th.get(x) || 0) + 1)
+            }
+
+            let len = t.length - 1
+            // 2개는 먼저 세팅
+            for (let i = 0; i < len; i++) {
+                sh.set(s[i], (sh.get(s[i]) || 0) + 1)
+            }
+
+            let lt = 0;
+            for (let rt = len; rt < s.length; rt++) {
+                // 오른쪽 문자 추가
+                sh.set(s[rt], (sh.get(s[rt]) || 0) + 1)
+
+                // 두 Map 비교 후 일치 시 카운트 증가
+                if (compareMaps(sh, th)) answer++
+
+                // 윈도우 이동을 위해 왼쪽 문자 카운트 감소
+                sh.set(s[lt], sh.get(s[lt]) - 1)
+                if (sh.get(s[lt]) === 0) {
+                    sh.delete(s[lt])
+                }
+                lt++
+            }
+
+            return answer;
+        }
+
+        let a = "bacaAacba";
+        let b = "abc";
+        console.log(solution(a, b));
+    </script>
+</body>
+
+</html>

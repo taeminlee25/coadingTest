@@ -1,0 +1,42 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>출력결과</title>
+</head>
+
+<body>
+    <script>
+        function solution(target, arr) {
+            // 이분 검색은 정렬되어있어야 한다.
+            // 시작, 끝 인덱스를 정의한다.
+            // 중앙 인덱스를 구한다.
+            // 찾고자 하는 값과 비교하며 절반 씩 버린다.
+            arr.sort((a, b) => a - b)
+
+            let low = 0;
+            let high = arr.length - 1
+
+            while (low <= high) {
+                let mid = Math.floor((low + high) / 2)
+                if (arr[mid] === target) {
+                    answer = mid + 1;
+                    break
+                } else if (arr[mid] > target) {
+                    high = mid - 1
+                } else {
+                    arr[mid] < target
+                    low = mid + 1
+                }
+            }
+
+
+            return answer;
+        }
+
+        let arr = [23, 87, 65, 12, 57, 32, 99, 81];
+        console.log(solution(32, arr));
+    </script>
+</body>
+
+</html>
