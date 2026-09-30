@@ -14,6 +14,7 @@
         function solution(m, arr) {
             let answer = Number.MAX_SAFE_INTEGER;
             function DFS(L, sum) {
+                if (answer < L) return
                 if (sum > m) return
                 if (sum === m) {
                     answer = Math.min(answer, L)

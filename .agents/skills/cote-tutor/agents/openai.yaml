@@ -1,0 +1,4 @@
+interface:
+  display_name: "코테 튜터"
+  short_description: "단계별 힌트와 반례 리뷰로 스스로 푸는 힘을 기르는 알고리즘 튜터"
+  default_prompt: "$cote-tutor 지금 공부하는 문제를 정답 대신 단계별 힌트와 접근 이유로 안내해줘."
